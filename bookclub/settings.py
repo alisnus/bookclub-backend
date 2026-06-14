@@ -42,10 +42,17 @@ INSTALLED_APPS = [
     'rest_framework',#Фреймворк для перевода из JSON в PY(DRF)
     'corsheaders', #Настройка портов у Джанго и Реакта
     'rest_framework_simplejwt',  # Для JWT-аутентификации
+    'django_filters',  # Для фильтрации в API
 ]
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
+    "http://localhost:5173",
+    "http://localhost:5174",
+    "http://localhost:5175",
+    "http://127.0.0.1:5173",
+    "http://127.0.0.1:5174",
+    "http://127.0.0.1:5175",
 ]
 
 MIDDLEWARE = [
@@ -66,11 +73,14 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',  # Только авторизованные пользователи
     ],
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ],
 }
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=20), #Access-токен действует 20 минут.
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=1), #Refresh-токен действует 1 день.
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30), #Access-токен действует 20 минут. (сейчас час, потом - сменить!)
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7), #Refresh-токен действует 1 день.
     'ROTATE_REFRESH_TOKENS': False,#Настройка времени жизни токена
     'BLACKLIST_AFTER_ROTATION': False,
     'UPDATE_LAST_LOGIN': False,
@@ -133,9 +143,10 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-ru'
 
-TIME_ZONE = 'UTC'
+# Use Chelyabinsk timezone (UTC+5) across the project
+TIME_ZONE = 'Asia/Yekaterinburg'
 
 USE_I18N = True
 

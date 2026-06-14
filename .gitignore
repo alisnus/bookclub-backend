@@ -1,19 +1,45 @@
 # Python
 __pycache__/
 *.py[cod]
-*.sqlite3
+*.so
+.Python
+*.egg-info/
+*.egg
+.pytest_cache/
+
+# Логи
 *.log
 
-# Django
+# Базы данных
+*.sqlite3
 db.sqlite3
+
+# Django
 .env
 .env.*
+*.env
 media/
 staticfiles/
+static/
+covers/
+posters/
 
-# VSCode, PyCharm
+# Виртуальное окружение
+venv/
+env/
+ENV/
+.venv
+
+# IDE
 .idea/
 .vscode/
+*.swp
 
-# Virtual environment
-venv/
+# Системные файлы
+.DS_Store
+Thumbs.db
+
+# Отчёты и временные файлы
+reports/
+*.tmp
+*.bak
